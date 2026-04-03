@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>私の日記</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>私の日記</h1>
+    </header>
+
+    <section class="editor">
+      <div class="editor-fields">
+        <input type="date" id="date-input">
+        <input type="text" id="title-input" placeholder="タイトル（任意）">
+      </div>
+      <textarea id="content-input" placeholder="今日の出来事を書いてみましょう..."></textarea>
+      <button id="save-btn">保存する</button>
+    </section>
+
+    <section class="entries">
+      <h2>過去の日記</h2>
+      <div id="entries-list"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
