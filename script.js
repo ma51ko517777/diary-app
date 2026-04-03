@@ -124,7 +124,6 @@ async function renderEntries() {
           </div>
           <div class="entry-actions">
             <button class="edit-btn" onclick="window.editEntry('${id}', '${entry.date}', \`${escapeHtml(entry.title || '')}\`, \`${escapeHtml(entry.content)}\`)">編集</button>
-            <button class="delete-btn" onclick="window.deleteEntry('${id}')" title="削除">✕</button>
           </div>
         </div>
         <div class="entry-content">${escapeHtml(entry.content)}</div>
