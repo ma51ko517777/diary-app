@@ -7,26 +7,47 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <header>
+
+  <!-- ログイン画面 -->
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-box">
       <h1>私の日記</h1>
-    </header>
+      <p class="auth-subtitle">ログインまたは新規登録</p>
 
-    <section class="editor">
-      <div class="editor-fields">
-        <input type="date" id="date-input">
-        <input type="text" id="title-input" placeholder="タイトル（任意）">
-      </div>
-      <textarea id="content-input" placeholder="今日の出来事を書いてみましょう..."></textarea>
-      <button id="save-btn">保存する</button>
-    </section>
+      <input type="email" id="auth-email" placeholder="メールアドレス">
+      <input type="password" id="auth-password" placeholder="パスワード（6文字以上）">
 
-    <section class="entries">
-      <h2>過去の日記</h2>
-      <div id="entries-list"></div>
-    </section>
+      <button id="login-btn">ログイン</button>
+      <button id="signup-btn" class="secondary">新規登録</button>
+
+      <p id="auth-error" class="auth-error"></p>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- 日記アプリ画面 -->
+  <div id="app-screen" class="app-screen hidden">
+    <div class="container">
+      <header>
+        <h1>私の日記</h1>
+        <button id="logout-btn">ログアウト</button>
+      </header>
+
+      <section class="editor">
+        <div class="editor-fields">
+          <input type="date" id="date-input">
+          <input type="text" id="title-input" placeholder="タイトル（任意）">
+        </div>
+        <textarea id="content-input" placeholder="今日の出来事を書いてみましょう..."></textarea>
+        <button id="save-btn">保存する</button>
+      </section>
+
+      <section class="entries">
+        <h2>過去の日記</h2>
+        <div id="entries-list"></div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>

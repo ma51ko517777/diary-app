@@ -17,13 +17,6 @@ body {
   padding: 24px 16px;
 }
 
-header h1 {
-  font-size: 2rem;
-  color: #5a3e2b;
-  text-align: center;
-  margin-bottom: 32px;
-  letter-spacing: 0.1em;
-}
 
 /* エディター */
 .editor {
@@ -196,4 +189,120 @@ textarea:focus {
   color: #aaa;
   padding: 40px 0;
   font-size: 0.95rem;
+}
+
+/* ログイン画面 */
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f0e8;
+}
+
+.auth-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-box h1 {
+  font-size: 1.8rem;
+  color: #5a3e2b;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.auth-box input {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fafafa;
+}
+
+.auth-box input:focus {
+  outline: none;
+  border-color: #a0856a;
+}
+
+.auth-box button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  background: #7a5c44;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.auth-box button:hover {
+  background: #5a3e2b;
+}
+
+.auth-box button.secondary {
+  background: #fff;
+  color: #7a5c44;
+  border: 1px solid #7a5c44;
+}
+
+.auth-box button.secondary:hover {
+  background: #f5f0e8;
+}
+
+.auth-error {
+  color: #e57373;
+  font-size: 0.88rem;
+  text-align: center;
+  min-height: 1.2em;
+}
+
+/* アプリ画面 */
+.app-screen header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.app-screen header h1 {
+  font-size: 2rem;
+  color: #5a3e2b;
+  letter-spacing: 0.1em;
+}
+
+#logout-btn {
+  background: none;
+  border: 1px solid #c8a97a;
+  color: #a0856a;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+#logout-btn:hover {
+  background: #f5f0e8;
+}
+
+.hidden {
+  display: none !important;
 }
