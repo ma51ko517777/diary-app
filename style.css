@@ -153,6 +153,29 @@ textarea:focus {
   white-space: pre-wrap;
 }
 
+.entry-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.edit-btn {
+  background: none;
+  border: 1px solid #c8a97a;
+  color: #a0856a;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+
+.edit-btn:hover {
+  background: #a0856a;
+  color: #fff;
+}
+
 .delete-btn {
   background: none;
   border: none;

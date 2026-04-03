@@ -40,7 +40,10 @@ function renderEntries() {
           <span class="entry-date">${formatDate(entry.date)}</span>
           ${entry.title ? `<span class="entry-title">${escapeHtml(entry.title)}</span>` : ''}
         </div>
-        <button class="delete-btn" onclick="deleteEntry('${entry.id}')" title="削除">✕</button>
+        <div class="entry-actions">
+          <button class="edit-btn" onclick="editEntry('${entry.id}')" title="編集">編集</button>
+          <button class="delete-btn" onclick="deleteEntry('${entry.id}')" title="削除">✕</button>
+        </div>
       </div>
       <div class="entry-content">${escapeHtml(entry.content)}</div>
     </div>
@@ -56,6 +59,39 @@ function escapeHtml(text) {
     .replace(/"/g, '&quot;');
 }
 
+// 編集中のIDを管理
+let editingId = null;
+
+// 編集モードに入る
+function editEntry(id) {
+  const entries = loadEntries();
+  const entry = entries.find(e => e.id === id);
+  if (!entry) return;
+
+  editingId = id;
+  dateInput.value = entry.date;
+  document.getElementById('title-input').value = entry.title || '';
+  document.getElementById('content-input').value = entry.content;
+
+  const saveBtn = document.getElementById('save-btn');
+  saveBtn.textContent = '更新する';
+  saveBtn.style.background = '#4a7a5c';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 編集モードをキャンセル
+function cancelEdit() {
+  editingId = null;
+  document.getElementById('title-input').value = '';
+  document.getElementById('content-input').value = '';
+  dateInput.value = today;
+
+  const saveBtn = document.getElementById('save-btn');
+  saveBtn.textContent = '保存する';
+  saveBtn.style.background = '';
+}
+
 // 保存ボタンの処理
 document.getElementById('save-btn').addEventListener('click', () => {
   const date = dateInput.value;
@@ -68,12 +104,27 @@ document.getElementById('save-btn').addEventListener('click', () => {
   }
 
   const entries = loadEntries();
-  entries.push({
-    id: Date.now().toString(),
-    date,
-    title,
-    content
-  });
+
+  if (editingId) {
+    // 編集モード：既存エントリを更新
+    const index = entries.findIndex(e => e.id === editingId);
+    if (index !== -1) {
+      entries[index] = { id: editingId, date, title, content };
+    }
+    editingId = null;
+    const saveBtn = document.getElementById('save-btn');
+    saveBtn.textContent = '保存する';
+    saveBtn.style.background = '';
+  } else {
+    // 新規追加
+    entries.push({
+      id: Date.now().toString(),
+      date,
+      title,
+      content
+    });
+  }
+
   saveEntries(entries);
 
   // 入力欄をリセット
