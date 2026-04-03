@@ -151,6 +151,7 @@ document.getElementById('save-btn').addEventListener('click', async () => {
     const saveBtn = document.getElementById('save-btn');
     saveBtn.textContent = '保存する';
     saveBtn.style.background = '';
+    document.getElementById('delete-edit-btn').classList.add('hidden');
   } else {
     await addDoc(entriesRef, { date, title, content });
   }
@@ -173,6 +174,8 @@ window.editEntry = (id, date, title, content) => {
   saveBtn.textContent = '更新する';
   saveBtn.style.background = '#4a7a5c';
 
+  document.getElementById('delete-edit-btn').classList.remove('hidden');
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
@@ -182,3 +185,19 @@ window.deleteEntry = async (id) => {
   await deleteDoc(doc(db, 'users', currentUser.uid, 'entries', id));
   renderEntries();
 };
+
+// 編集中の削除ボタン
+document.getElementById('delete-edit-btn').addEventListener('click', async () => {
+  if (!editingId) return;
+  if (!confirm('この日記を削除しますか？')) return;
+  await deleteDoc(doc(db, 'users', currentUser.uid, 'entries', editingId));
+  editingId = null;
+  document.getElementById('title-input').value = '';
+  document.getElementById('content-input').value = '';
+  dateInput.value = today;
+  const saveBtn = document.getElementById('save-btn');
+  saveBtn.textContent = '保存する';
+  saveBtn.style.background = '';
+  document.getElementById('delete-edit-btn').classList.add('hidden');
+  renderEntries();
+});

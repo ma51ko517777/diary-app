@@ -78,10 +78,14 @@ textarea:focus {
   border-color: #a0856a;
 }
 
-#save-btn {
-  display: block;
-  width: 100%;
+#editor-btns {
+  display: flex;
+  gap: 12px;
   margin-top: 16px;
+}
+
+#save-btn {
+  flex: 1;
   padding: 12px;
   background: #7a5c44;
   color: #fff;
@@ -95,6 +99,23 @@ textarea:focus {
 
 #save-btn:hover {
   background: #5a3e2b;
+}
+
+#delete-edit-btn {
+  flex: 1;
+  padding: 12px;
+  background: #fff;
+  color: #e57373;
+  border: 1px solid #e57373;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#delete-edit-btn:hover {
+  background: #fdecea;
 }
 
 /* 過去の日記 */
